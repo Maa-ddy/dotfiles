@@ -1,0 +1,6 @@
+bind-addr: 192.168.1.13:8182
+auth: password
+password: 035715900Codeserver
+cert: false
+user-data-dir: /home/mahdy/.config/VSCodium/
+extensions-dir: /home/mahdy/.vscode-oss/extensions/

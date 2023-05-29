@@ -1,0 +1,5 @@
+configuration {
+  drun-display-format: "{icon} {name}";
+  show-icons: true;
+}
+@import "/usr/share/rofi/themes/Monokai.rasi"
