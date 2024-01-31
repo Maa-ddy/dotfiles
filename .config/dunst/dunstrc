@@ -21,7 +21,7 @@
     # Markup is allowed
     format = "<small>[<b>%a</b>] %s</small>\n%b"
     icon_position = left
-    corner_radius = 20
+    #corner_radius = 20
 
     # Sort messages by urgency
     sort = yes
