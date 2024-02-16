@@ -254,8 +254,8 @@ bindsym $mod+control+slash mode "opacity"
 
 
 # custom bindings
-bindsym $mod+backslash exec i3lock --color "$black"
-bindsym $mod+shift+backslash exec systemctl suspend
+bindsym $mod+backslash exec betterlockscreen -l blur
+bindsym $mod+shift+backslash exec betterlockscreen -l blur & systemctl suspend
 bindsym $mod+plus exec gnome-control-center
 bindsym $mod+control+s exec flameshot gui
 bindsym $mod+p exec copyq menu
