@@ -90,6 +90,8 @@ bindsym $mod+Shift+q kill
 
 # email client: thunderbird
 bindsym Home exec "~/.config/i3/scripts/i3-scratchpad -s DP-1 -d1100x96% -p-10,-47 -mr -tabr thunderbird" 
+# teams (behind the email client mapping)
+bindsym Shift+Home exec "teams && ~/.config/i3/scripts/i3-scratchpad -s DP-1 -d1100x96% -p-10,-47 -mr -tabr teams" 
 
 # take a note
 bindsym $mod+apostrophe exec "~/.config/i3/scripts/i3-scratchpad -s DP-1 -d1500x900 -p0,-35 -ml -tabl brave-browser --app=http://localhost:3110/e/en/notes"
