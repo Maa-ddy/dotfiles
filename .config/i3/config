@@ -100,7 +100,7 @@ bindsym $mod+apostrophe exec "~/.config/i3/scripts/i3-scratchpad -s DP-1 -d1500x
 bindsym $mod+period exec "~/.config/i3/scripts/i3-scratchpad -s DP-1 -d850x1050 -p0,0 -ml -tatl brave-browser --new-window http://localhost:3111"
 
 # processes monitoring
-bindsym $mod+Delete exec "~/.config/i3/scripts/i3-scratchpad -s DP-1 -d800x900 -p500,-35 -mb -tabc i3-sensible-terminal -e htop"
+bindsym $mod+Delete exec "~/.config/i3/scripts/i3-scratchpad -s DP-1 -d800x900 -p500,-35 -mb -tabc i3-sensible-terminal -e btop"
 
 # start dmenu (a program launcher)
 #bindsym $mod+d exec dmenu_run
