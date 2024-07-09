@@ -47,9 +47,7 @@ bindsym XF86AudioMute exec --no-startup-id pactl set-sink-mute @DEFAULT_SINK@ to
 bindsym XF86AudioMicMute exec --no-startup-id pactl set-source-mute @DEFAULT_SOURCE@ toggle && $refresh_i3status
 
 bindsym XF86AudioNext exec playerctl next
-
 bindsym XF86AudioPrev exec playerctl previous
-
 bindsym XF86AudioPlay exec playerctl play-pause
 
 # Use Mouse+$mod to drag floating windows to their wanted position
@@ -57,30 +55,37 @@ floating_modifier $mod
 
 # start a terminal
 bindsym $mod+Shift+Return exec i3-sensible-terminal
-bindsym $mod+Return exec "~/.config/i3/scripts/i3-scratchpad -s DP-1 -d850x1060 -p0,100 -mb -tatr i3-sensible-terminal"
+bindsym $mod+Return exec "~/.config/i3/scripts/i3-scratchpad -s DP-1 -d530x600 -p0,100 -mb -tatr i3-sensible-terminal"
 bindsym $mod+Shift+slash scratchpad show
 bindsym $mod+slash move scratchpad
 # floating/resizing windows
-for_window [class="Gnome-terminal"] floating enable
 for_window [class="Pavucontrol"] floating enable
 for_window [class="TelegramDesktop"] floating enable
 for_window [title="DevTools*"] floating enable
-for_window [class="Gnome-terminal"] resize set 850 1050
+
+for_window [class="Gnome-terminal"] floating enable
+for_window [class="Gnome-terminal"] resize set 530 600
 for_window [class="Gnome-terminal"] move position mouse
 
 for_window [class="vlc"] floating enable
 for_window [class="vlc"] resize set 400 400
 for_window [class="vlc"] move position mouse
 
-# open files
+for_window [class="Org.gnome.Nautilus"] floating enable
+for_window [class="Org.gnome.Nautilus"] resize set 1100 800
+for_window [class="Org.gnome.Nautilus"] move position mouse
+
+for_window [class="Gedit"] floating enable
+for_window [class="Gedit"] resize set 1100 800
+for_window [class="Gedit"] move position mouse
+
+# slide file browser from bottom
 bindsym $mod+d exec "~/.config/i3/scripts/i3-scratchpad -s DP-1 -d1100x800 -p0,0 -mb -t nautilus ~/Desktop"
-#for_window [class="Org.gnome.Nautilus"] floating enable
-#for_window [class="Org.gnome.Nautilus"] resize set 840 1045
-#for_window [class="Org.gnome.Nautilus"] move position mouse
 
 # start a browser side window
 bindsym $mod+b exec "~/.config/i3/scripts/i3-scratchpad -s DP-1 -d850x1060 -p0,0 -mr -tatr firefox --new-window https://chat.openai.com/chat"
 bindsym $mod+Shift+b exec "~/.config/i3/scripts/i3-scratchpad -s DP-1 -d850x1060 -p0,-35 -mr -tabr librewolf --new-window https://www.google.com"
+
 
 # kill focused window
 bindsym $mod+Shift+q kill
