@@ -1,7 +1,5 @@
 " reserved for vimscript exercices & examples
 
-
-
 "echom "HELLO Maaddy"
 set numberwidth=4
 set wrap
