@@ -29,6 +29,19 @@
         },
         {
             "from": {
+                "key_code": "tab",
+                "modifiers": { "mandatory": ["fn"] }
+            },
+            "to": [
+                {
+                    "key_code": "tab",
+                    "modifiers": ["left_control"]
+                }
+            ],
+            "type": "basic"
+        },
+        {
+            "from": {
                 "key_code": "v",
                 "modifiers": { "mandatory": ["fn"] }
             },
@@ -74,6 +87,19 @@
             "to": [
                 {
                     "key_code": "o",
+                    "modifiers": ["left_control"]
+                }
+            ],
+            "type": "basic"
+        },
+        {
+            "from": {
+                "key_code": "i",
+                "modifiers": { "mandatory": ["fn"] }
+            },
+            "to": [
+                {
+                    "key_code": "i",
                     "modifiers": ["left_control"]
                 }
             ],
@@ -211,6 +237,32 @@
         },
         {
             "from": {
+                "key_code": "p",
+                "modifiers": { "mandatory": ["fn", "left_shift"] }
+            },
+            "to": [
+                {
+                    "key_code": "p",
+                    "modifiers": ["left_control", "left_shift"]
+                }
+            ],
+            "type": "basic"
+        },
+        {
+            "from": {
+                "key_code": "e",
+                "modifiers": { "mandatory": ["fn", "left_shift"] }
+            },
+            "to": [
+                {
+                    "key_code": "e",
+                    "modifiers": ["left_command", "left_shift"]
+                }
+            ],
+            "type": "basic"
+        },
+        {
+            "from": {
                 "key_code": "b",
                 "modifiers": { "mandatory": ["fn"] }
             },
@@ -244,19 +296,6 @@
                 {
                     "key_code": "equal_sign",
                     "modifiers": ["left_command"]
-                }
-            ],
-            "type": "basic"
-        },
-        {
-            "from": {
-                "key_code": "tab",
-                "modifiers": { "mandatory": ["fn"] }
-            },
-            "to": [
-                {
-                    "key_code": "tab",
-                    "modifiers": ["left_control"]
                 }
             ],
             "type": "basic"
