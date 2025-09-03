@@ -13,7 +13,7 @@ set $mod Mod4
 
 # Font for window titles. Will also be used by the bar unless a different font
 # is used in the bar {} block below.
-font pango:fontawesome 6
+font pango:Noto color emoji 6
 # Maaddy's theme colors
 set $cyan #00e6da
 set $gray #454747
@@ -32,7 +32,7 @@ set $bright-green #00ff00
 
 # xss-lock grabs a logind suspend inhibit lock and will use i3lock to lock the
 # screen before suspend. Use loginctl lock-session to lock your screen.
-exec --no-startup-id xss-lock --transfer-sleep-lock -- i3lock --nofork
+# exec --no-startup-id xss-lock --transfer-sleep-lock -- i3lock --nofork
 exec_always compton --config ~/.config/compton.conf
 
 # NetworkManager is the most popular way to manage wireless networks on Linux,
@@ -45,6 +45,8 @@ bindsym XF86AudioRaiseVolume exec --no-startup-id pactl set-sink-volume @DEFAULT
 bindsym XF86AudioLowerVolume exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ -10% && $refresh_i3status
 bindsym XF86AudioMute exec --no-startup-id pactl set-sink-mute @DEFAULT_SINK@ toggle && $refresh_i3status
 bindsym XF86AudioMicMute exec --no-startup-id pactl set-source-mute @DEFAULT_SOURCE@ toggle && $refresh_i3status
+bindsym XF86MonBrightnessUp exec brightnessctl -d "intel_backlight" set +2%
+bindsym XF86MonBrightnessDown exec brightnessctl -d "intel_backlight" set 2%-
 
 bindsym XF86AudioNext exec playerctl next
 bindsym XF86AudioPrev exec playerctl previous
@@ -55,17 +57,31 @@ floating_modifier $mod
 
 # start a terminal
 bindsym $mod+Shift+Return exec i3-sensible-terminal
-bindsym $mod+Return exec "~/.config/i3/scripts/i3-scratchpad -s DP-1 -d530x600 -p0,100 -mb -tatr i3-sensible-terminal"
+bindsym $mod+Return exec "~/.config/i3/scripts/i3-scratchpad -s DP-1 -t i3-sensible-terminal"
 bindsym $mod+Shift+slash scratchpad show
 bindsym $mod+slash move scratchpad
 # floating/resizing windows
 for_window [class="Pavucontrol"] floating enable
+for_window [class="Pavucontrol"] resize set 1000 1000
+for_window [class="Pavucontrol"] move position 50 50
+
 for_window [class="TelegramDesktop"] floating enable
 for_window [title="DevTools*"] floating enable
+for_window [title="Developer Tools*"] floating enable
 
 for_window [class="Gnome-terminal"] floating enable
-for_window [class="Gnome-terminal"] resize set 530 600
-for_window [class="Gnome-terminal"] move position mouse
+for_window [class="Gnome-terminal"] resize set 1400 900
+for_window [class="Gnome-terminal"] move position center
+
+for_window [class="gnome-text-editor"] floating enable
+for_window [class="gnome-text-editor"] resize set 1350 920
+for_window [class="gnome-text-editor"] move position center
+
+
+for_window [class="Arandr"] floating enable
+for_window [class="Arandr"] resize set 700 700
+for_window [class="Arandr"] move position mouse
+
 
 for_window [class="vlc"] floating enable
 for_window [class="vlc"] resize set 400 400
@@ -78,6 +94,11 @@ for_window [class="Org.gnome.Nautilus"] move position mouse
 for_window [class="Gedit"] floating enable
 for_window [class="Gedit"] resize set 1100 800
 for_window [class="Gedit"] move position mouse
+
+for_window [class="Blueman-manager"] floating enable
+for_window [class="Blueman-manager"] resize set 1100 800
+for_window [class="Blueman-manager"] move position mouse
+
 
 # slide file browser from bottom
 bindsym $mod+d exec "~/.config/i3/scripts/i3-scratchpad -s DP-1 -d1100x800 -p0,0 -mb -t nautilus ~/Desktop"
@@ -99,7 +120,7 @@ bindsym Home exec "~/.config/i3/scripts/i3-scratchpad -s DP-1 -d1100x96% -p-10,-
 bindsym Shift+Home exec "teams && ~/.config/i3/scripts/i3-scratchpad -s DP-1 -d1100x96% -p-10,-47 -mr -tabr teams" 
 
 # take a note
-bindsym $mod+apostrophe exec "~/.config/i3/scripts/i3-scratchpad -s DP-1 -d1500x900 -p0,-35 -ml -tabl brave-browser --app=http://localhost:3110/e/en/notes"
+bindsym $mod+apostrophe exec "~/.config/i3/scripts/i3-scratchpad -s DP-1 -d1500x900 -p0,-35 -ml -tabl brave-browser --app=http://mahdy.thinkpad:3120/notes"
 
 # open tools dashboard
 bindsym $mod+period exec "~/.config/i3/scripts/i3-scratchpad -s DP-1 -d850x1050 -p0,0 -ml -tatl brave-browser --new-window http://localhost:3111"
@@ -167,40 +188,40 @@ bindsym $mod+a focus parent
 
 # Define names for default workspaces for which we configure key bindings later on.
 # We use variables to avoid repeating the names in multiple places.
-set $ws1 "1: "
-set $ws2 "2"
-set $ws3 "3: "
+set $ws1 "💬"
+set $ws2 "🔀"
+set $ws3 "🏠"
 set $ws4 "4"
-set $ws5 "5: "
-set $ws6 "6: "
-set $ws7 "7: "
-set $ws8 "8"
+set $ws5 "💻"
+set $ws6 "🖥️"
+set $ws7 "🎮"
+set $ws8 "💎"
 set $ws9 "9"
 set $ws10 "10"
 
 # switch to workspace
-bindsym $mod+1 workspace number $ws1
-bindsym $mod+2 workspace number $ws2
-bindsym $mod+3 workspace number $ws3
-bindsym $mod+4 workspace number $ws4
-bindsym $mod+5 workspace number $ws5
-bindsym $mod+6 workspace number $ws6
-bindsym $mod+7 workspace number $ws7
-bindsym $mod+8 workspace number $ws8
-bindsym $mod+9 workspace number $ws9
-bindsym $mod+0 workspace number $ws10
+bindsym $mod+1 workspace $ws1
+bindsym $mod+2 workspace $ws2
+bindsym $mod+3 workspace $ws3
+bindsym $mod+4 workspace $ws4
+bindsym $mod+5 workspace $ws5
+bindsym $mod+6 workspace $ws6
+bindsym $mod+7 workspace $ws7
+bindsym $mod+8 workspace $ws8
+bindsym $mod+9 workspace $ws9
+bindsym $mod+0 workspace $ws10
 
 # move focused container to workspace
-bindsym $mod+Shift+1 move container to workspace number $ws1
-bindsym $mod+Shift+2 move container to workspace number $ws2
-bindsym $mod+Shift+3 move container to workspace number $ws3
-bindsym $mod+Shift+4 move container to workspace number $ws4
-bindsym $mod+Shift+5 move container to workspace number $ws5
-bindsym $mod+Shift+6 move container to workspace number $ws6
-bindsym $mod+Shift+7 move container to workspace number $ws7
-bindsym $mod+Shift+8 move container to workspace number $ws8
-bindsym $mod+Shift+9 move container to workspace number $ws9
-bindsym $mod+Shift+0 move container to workspace number $ws10
+bindsym $mod+Shift+1 move container to workspace $ws1
+bindsym $mod+Shift+2 move container to workspace $ws2
+bindsym $mod+Shift+3 move container to workspace $ws3
+bindsym $mod+Shift+4 move container to workspace $ws4
+bindsym $mod+Shift+5 move container to workspace $ws5
+bindsym $mod+Shift+6 move container to workspace $ws6
+bindsym $mod+Shift+7 move container to workspace $ws7
+bindsym $mod+Shift+8 move container to workspace $ws8
+bindsym $mod+Shift+9 move container to workspace $ws9
+bindsym $mod+Shift+0 move container to workspace $ws10
 
 # reload the configuration file
 bindsym $mod+Shift+c reload
@@ -263,12 +284,15 @@ bindsym $mod+control+slash mode "opacity"
 # custom bindings
 bindsym $mod+backslash exec betterlockscreen -l blur
 bindsym $mod+shift+backslash exec betterlockscreen -l blur & systemctl suspend
-bindsym $mod+plus exec gnome-control-center
+bindsym $mod+plus exec env XDG_CURRENT_DESKTOP=GNOME gnome-control-center
 bindsym $mod+control+s exec flameshot gui
 bindsym $mod+p exec copyq menu
 bindsym $mod+minus exec --no-startup-id polybar-msg cmd toggle
 
-exec_always while true; do feh --randomize --bg-scale /home/mahdy/Pictures/wallpapers/*; sleep 900; done
+
+
+exec_always while true; do feh --randomize --bg-scale ~/Pictures/wallpapers/*; sleep 900; done
+exec_always while true; do betterlockscreen -u "$(find ~/Pictures/wallpapers -type f \( -iname '*.jpg' -o -iname '*.png' \) | shuf -n 1)" --blur 0.8; sleep 900; done
 exec_always ~/.config/polybar/launch.sh
 exec copyq
 
@@ -286,8 +310,8 @@ for_window [class="^.*"] border pixel 1
 
 # Set inner/outer gaps
 #for_window [class="^.*"] border pixel 0
-gaps inner 5
-gaps outer 5
+gaps inner 20
+gaps outer 3
 
 # Additionally, you can issue commands with the following syntax. This is useful to bind keys to changing the gap size.
 # gaps inner|outer current|all set|plus|minus <px>
@@ -307,6 +331,7 @@ set $mode_gaps_outer Outer Gaps: +|-|0 (local), Shift + +|-|0 (global)
 set $mode_gaps_inner Inner Gaps: +|-|0 (local), Shift + +|-|0 (global)
 bindsym $mod+Shift+g mode "$mode_gaps"
 bindsym $mod+Tab exec rofi -show window
+#bindsym $mod+u exec rofi -modi windowcd -show windowcd -selected-row 1 & sleep 0.15 && xdotool key Return
 #bindsym $mod+Shift+Tab exec rofi -show windowcd
 
 mode "$mode_gaps" {
@@ -342,3 +367,30 @@ mode "$mode_gaps_outer" {
         bindsym Return mode "default"
         bindsym Escape mode "default"
 }
+
+
+# trackpad default config
+# list devices:
+# xinput list
+# list device props:
+# xinput list-props <device_id>
+
+# configure touchpad props (such as natural scroll, tap to click, ...)
+exec_always xinput set-prop $(xinput | grep Touchpad | grep -oP 'id=\K[0-9]+') 342 1
+exec_always xinput set-prop $(xinput | grep Touchpad | grep -oP 'id=\K[0-9]+') 351 1
+exec_always xinput set-prop $(xinput | grep Touchpad | grep -oP 'id=\K[0-9]+') 350 1
+exec_always xinput set-prop $(xinput | grep Touchpad | grep -oP 'id=\K[0-9]+') 371 1
+exec_always xinput set-prop $(xinput | grep Touchpad | grep -oP 'id=\K[0-9]+') 372 1
+exec_always xinput set-prop $(xinput | grep Touchpad | grep -oP 'id=\K[0-9]+') 318 1
+
+#exec_always xinput set-prop 15 342 1
+#exec_always xinput set-prop 15 351 1
+#exec_always xinput set-prop 15 371 1
+#exec_always xinput set-prop 15 372 1
+#exec_always xinput set-prop 15 318 1
+
+
+bindsym $mod+m exec dunstctl close
+bindsym $mod+Shift+m exec dunstctl close-all
+bindsym $mod+n exec dunstctl history-pop
+bindsym $mod+Shift+n exec dunstctl context
